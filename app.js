@@ -24,7 +24,9 @@ app.post('/search', (req, res) => {
       console.log('Then')
       const data = response.data;
       const $ = cheerio.load(data);
-      const doc = $('.lyrics').text()
+      const doc = $('.lyrics').text().replace(/ *\[[^\]]*]/g, '')
+      // let final = doc.replace(/ *\[[^\]]*]/g, '');
+      // console.log(final)
       return res.send(doc)
     })
     .catch(function (error) {
