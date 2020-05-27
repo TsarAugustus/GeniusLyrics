@@ -1,0 +1,10 @@
+doctype html
+head
+body
+  div 
+    h1 Paste the Genius.com URL
+    form(action="/search", method="post", enctype="application/x-www-form-urlencoded")
+      input(type="text", id="song", name="songUrl", required)
+      button(type="submit", value="submit") Search Song Lyrics
+    
+    

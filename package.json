@@ -1,0 +1,26 @@
+{
+  "name": "geniuslyrics",
+  "version": "1.0.0",
+  "description": "Genius API, with ability to scrape song for lyrics",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TsarAugustus/GeniusLyrics.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TsarAugustus/GeniusLyrics/issues"
+  },
+  "homepage": "https://github.com/TsarAugustus/GeniusLyrics#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
+    "genius-api": "^0.4.1",
+    "pug": "^2.0.4"
+  }
+}
