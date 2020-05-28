@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-
 //When the user inputs a url, it searches Genius.com for the lyrics and scrapes them
 app.post('/search', (req, res) => {
   //GET the url
@@ -44,9 +43,27 @@ app.post('/search', (req, res) => {
           currentWord += doc[i];
         }
       }
-      console.log(`Doc array length ${doc.length}`);
-      console.log(`Words array length ${words.length}`);
-      return res.send(doc)
+
+      //This function gets each word in the words array
+      //then it will go through each word and assign it a value in a map
+      //This is to find the most frequent words in the song
+      function getFreq(words) {
+        let freqMap = {};
+        for(let i=0; i<words.length; i++) {
+          let word = words[i];
+          if(freqMap[word]) {
+            freqMap[word]++;
+          } else {
+            freqMap[word] = 1;
+          }
+        }
+
+        //TODO: gotta sort the map by freqncy
+        return freqMap;
+      }
+
+      let freq = getFreq(words);
+      return res.send(freq);
     })
     .catch(function (error) {
       console.log(error);
