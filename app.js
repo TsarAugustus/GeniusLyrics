@@ -58,11 +58,25 @@ app.post('/search', (req, res) => {
           }
         }
 
-        //TODO: gotta sort the map by freqncy
-        return freqMap;
+        //the freqMap must be reordered into an array, as a map can't be changed (or sorted apparently?)
+        //The for loop iterates through each key in the freqMap map, and takes the name of the key (the word)
+        // and it also takes the value (how often the word is said)
+        let orderedfreq = [];
+        for(let key in freqMap) {
+          orderedfreq.push({
+            word: key,
+            value: freqMap[key]
+          })
+        }
+        //return the new array
+        return orderedfreq;
       }
 
-      let freq = getFreq(words);
+      //order the array by word frequency
+      let freq = getFreq(words).sort(function(a, b) {
+        return b.value - a.value;
+      });
+
       return res.send(freq);
     })
     .catch(function (error) {
